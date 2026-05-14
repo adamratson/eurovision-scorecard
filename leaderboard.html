@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eurovision 2026 — Leaderboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="header-deco">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+      <h1>Eurovision 2026<br><span class="h1-sub">Leaderboard</span></h1>
+      <p class="subtitle">Vienna &middot; Grand Final &middot; 16 May 2026</p>
+    </div>
+  </header>
+
+  <nav class="page-nav">
+    <a href="index.html" class="nav-link">Scorecard</a>
+    <a href="leaderboard.html" class="nav-link active">Leaderboard</a>
+  </nav>
+
+  <div class="container">
+
+    <div class="upload-zone" id="upload-zone">
+      <div class="upload-icon">⬆</div>
+      <p class="upload-text">
+        Drop score JSON files here<br>
+        <span class="upload-sub">or <label for="file-input" class="upload-browse">browse</label> — add one file per person</span>
+      </p>
+      <input type="file" id="file-input" accept=".json" multiple>
+    </div>
+
+    <div class="scorers-list" id="scorers-list"></div>
+
+    <div id="leaderboard-wrapper" hidden>
+      <div class="table-wrapper">
+        <table id="leaderboard-table">
+          <thead id="leaderboard-head"></thead>
+          <tbody id="leaderboard-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="empty-state" id="empty-state">Upload at least one score file to see the leaderboard.</p>
+
+  </div>
+
+  <script src="leaderboard.js"></script>
+</body>
+</html>

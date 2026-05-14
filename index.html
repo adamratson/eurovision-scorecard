@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eurovision 2026 Scorecard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="header-deco">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+      <h1>Eurovision 2026<br><span class="h1-sub">Scorecard</span></h1>
+      <p class="subtitle">Vienna &middot; Grand Final &middot; 16 May 2026</p>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-days">--</span>
+          <span class="cd-label">days</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-hours">--</span>
+          <span class="cd-label">hrs</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-mins">--</span>
+          <span class="cd-label">min</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-secs">--</span>
+          <span class="cd-label">sec</span>
+        </div>
+      </div>
+      <div class="header-deco small">★ &nbsp; Wiener Stadthalle &nbsp; ★</div>
+    </div>
+  </header>
+
+  <nav class="page-nav">
+    <a href="index.html" class="nav-link active">Scorecard</a>
+    <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+  </nav>
+
+  <div class="container">
+    <div class="notice" id="sf2-notice">
+      <strong>Running order provisional</strong> — SF2 qualifiers TBD (5 of the 15 <span class="tbd-label">SF2 TBD</span> entries below won't make it). Official running order drops Friday. Edit <code>data/contestants.json</code> to reorder &amp; cull non-qualifiers.
+    </div>
+
+    <div class="name-bar">
+      <label for="scorer-name">Your name</label>
+      <input type="text" id="scorer-name" placeholder="e.g. Adam" maxlength="40" autocomplete="off">
+      <span class="name-hint">Shown on the leaderboard</span>
+    </div>
+
+    <div class="controls">
+      <div class="score-summary">
+        <span class="avg-value" id="avg-score">—</span>
+        <div class="avg-meta">
+          <span class="avg-label">avg score</span>
+          <span class="scored-count" id="scored-count"></span>
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="export-btn" class="btn btn-primary">⬇&thinsp; Export JSON</button>
+        <button id="clear-btn" class="btn btn-danger">✕&thinsp; Clear All</button>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="scorecard">
+        <thead>
+          <tr>
+            <th class="col-num">#</th>
+            <th class="col-flag"></th>
+            <th class="col-country">Country</th>
+            <th class="col-song">Artist / Song</th>
+            <th class="col-notes">Notes</th>
+            <th class="col-score">Score / 10</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr class="placeholder-row">
+            <td colspan="6">Loading the talent…</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
