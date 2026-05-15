@@ -89,12 +89,7 @@ function makeRow(contestant, index) {
   const tr = document.createElement('tr');
   tr.dataset.country = contestant.country;
 
-  if (contestant.status === 'sf2') tr.classList.add('sf2-pending');
   if (scoreVal !== '') tr.classList.add('has-score');
-
-  const badge = contestant.status === 'sf2'
-    ? '<span class="sf2-badge">SF2 TBD</span>'
-    : '';
 
   const sliderNum = scoreVal !== '' ? parseFloat(scoreVal) : 0;
 
@@ -102,7 +97,7 @@ function makeRow(contestant, index) {
     <td class="col-num"><span class="row-num">${index + 1}</span></td>
     <td class="col-flag"><span class="flag">${flagEmoji(contestant.countryCode)}</span></td>
     <td class="col-country">
-      <span class="country-name">${contestant.country}</span>${badge}
+      <span class="country-name">${contestant.country}</span>
     </td>
     <td class="col-song">
       <div class="artist">${contestant.artist}</div>
