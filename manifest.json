@@ -1,0 +1,19 @@
+{
+  "name": "Eurovision 2026 Scorecard",
+  "short_name": "Eurovision",
+  "description": "Score every act at the Eurovision 2026 Grand Final in Vienna",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#060010",
+  "theme_color": "#060010",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
