@@ -909,11 +909,9 @@ tr.is-current-act {
   .cd-sep    { font-size: 1.6rem; }
 
   .container { padding: 1rem 0 5rem; }
-
   .name-bar  { padding: 0 1rem; }
   .controls  { padding: 0 1rem; }
 
-  /* transform table into stacked cards */
   .table-wrapper {
     overflow-x: visible;
     border: none;
@@ -922,19 +920,22 @@ tr.is-current-act {
     margin: 0;
   }
 
-  table  { min-width: unset; display: block; }
-  thead  { display: none; }
-  tbody  {
+  table { min-width: unset; display: block; }
+  thead { display: none; }
+  tbody {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
     padding: 0 0.85rem;
   }
 
+  /* Each row becomes a flex-wrap card.
+     Flag (4rem) + country (flex:1) share the first line.
+     Score and notes get width:100% so they wrap to their own lines. */
   tbody tr {
-    display: grid;
-    grid-template-columns: 4rem 1fr;
-    grid-template-rows: auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
     border: 1px solid var(--border);
     border-radius: 14px;
     overflow: hidden;
@@ -959,13 +960,12 @@ tr.is-current-act {
     50%       { box-shadow: 0 0 36px rgba(255,45,154,0.42); }
   }
 
-  /* hide desktop-only cells */
   .col-num  { display: none; }
   .col-song { display: none; }
 
   .col-flag {
-    grid-column: 1;
-    grid-row: 1;
+    width: 4rem;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -973,6 +973,7 @@ tr.is-current-act {
     padding: 0.9rem 0 0.75rem;
     background: rgba(0,0,0,0.18);
     border-right: 1px solid var(--border);
+    box-sizing: border-box;
   }
 
   .flag { font-size: 2.1rem; }
@@ -989,37 +990,63 @@ tr.is-current-act {
   }
 
   .col-country {
-    grid-column: 2;
-    grid-row: 1;
+    flex: 1;
+    min-width: 0;
     padding: 0.85rem 0.9rem 0.7rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box;
   }
 
-  .country-name  { font-size: 1rem; }
-  .mobile-meta   { display: block; }
+  .country-name { font-size: 1rem; }
+  .mobile-meta  { display: block; }
 
   .col-score {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    order: 1;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0.7rem 0.85rem 0.6rem;
     border-top: 1px solid rgba(255,255,255,0.05);
   }
 
-  /* hide slider on mobile, show tap buttons */
-  .score-cell    { display: none; }
+  .score-cell { display: none; }
+
   .tap-score-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0.3rem;
+    display: flex;
+    gap: 0.2rem;
   }
 
-  .reaction-chips { margin-top: 0.6rem; }
+  .tap-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 1rem;
+    border-radius: 6px;
+    padding: 0.35rem 0;
+  }
+
+  .reaction-chips {
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .reaction-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    border-radius: 8px;
+    min-height: 42px;
+    padding: 0.4rem 0;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .col-notes {
-    grid-column: 1 / -1;
-    grid-row: 3;
+    order: 2;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0 0.85rem 0.75rem;
   }
 
@@ -1031,7 +1058,8 @@ tr.is-current-act {
     font-size: 0.88rem;
   }
 
-  td, thead th { padding: 0; }
+  td { display: block; padding: 0; }
+  thead th { padding: 0; }
 }
 
 /* ── Leaderboard: upload zone ── */
